@@ -1,0 +1,28 @@
+http:
+    routers:
+        webpage:
+            entrypoints:
+                - websecure
+            service: webpage
+            rule: "Host(`webpage.duckdns.org`)"
+            tls: 
+                certResolver: 'myresolver'
+        webpage-http:
+            entrypoints:
+                - web
+            service: webpage
+            rule: "Host(`webpage.duckdns.org`)"
+            middlewares:
+                - redirect
+    services:
+        webpage:
+            loadbalancer:
+                servers:
+                    - url: "http://webpage:5000"
+
+    middlewares:
+        redirect:
+            redirectScheme:
+                scheme: https
+
+

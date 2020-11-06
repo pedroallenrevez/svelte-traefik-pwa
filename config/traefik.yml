@@ -1,0 +1,33 @@
+api:
+    insecure: false
+    dashboard: true
+
+providers:
+    docker:
+        exposedByDefault: false
+        network: "traefik"
+    file:
+        filename: "/etc/traefik/dynamic_conf.yml"
+        watch: true
+
+entryPoints:
+    web:
+        address: ":80"
+    websecure:
+        address: ":443"
+        http:
+            tls:
+                certResolver: myresolver
+                domains:
+                    - main: webpage.duckdns.org
+
+
+certificatesResolvers:
+    myresolver:
+        acme:
+            email: "MY_EMAIL@DOMAIN.COM"
+            storage: "./letsEncrypt/acme.json"
+            # Used for testing purposes - uncomment to test
+            # caserver: "https://acme-staging-v02.api.letsencrypt.org/directory"
+            dnsChallenge:
+                provider: "duckdns"
