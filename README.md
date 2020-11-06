@@ -1,6 +1,6 @@
 # Svelte PWA with Traefik
 
-This is an extension to the Svelte-PWA template at ttps://github.com/tretapey/svelte-pwa.
+This is an extension to the Svelte-PWA template at https://github.com/tretapey/svelte-pwa.
 It features a simple setup with [Traefik](https://traefik.io/) using docker-compose that allows easy self-hosting webpages using [DuckDNS](https://www.duckdns.org/). It features redirection from HTTP to HTTPS, and ACME DNS challenge using [LetsEncrypt](https://letsencrypt.org/).
 
 To create a new project base on this template using [degit](https://github.com/Rich-Harris/degit):
